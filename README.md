@@ -1,15 +1,16 @@
-# Welcome to your CDK TypeScript project
+# Sample project to showcase sharing output from one stack to another stack
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`AwsCdkCrossStackParamsStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+## Pre-requisite
+ - AWS CDK
+ - Node
+ - Docker running
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Deploy the stacks. 
+First SampleS3Stack will be deployed, that will output the name of S3 bucket. Second stack will then be deployed which will create the Lambda function that will output the name of S3 bucket. Second stack will pick the name of S3 bucket from output variable of SampleS3Stack 
 
-## Useful commands
+```
+cdk synth
+cdk deploy SampleS3Stack
+cdk deploy AwsCdkCrossStackParamsStack
+```
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
